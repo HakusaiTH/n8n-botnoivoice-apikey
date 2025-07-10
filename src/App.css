@@ -125,6 +125,58 @@ main {
     align-items: center;
 }
 
+/* --- User Info Section Styles --- */
+.user-info {
+ display: grid; /* ใช้ Grid Layout เพื่อจัดวางตำแหน่ง */
+ grid-template-columns: auto 1fr; /* คอลัมน์แรกสำหรับรูป (auto width), คอลัมน์สองสำหรับชื่อและ UID (1 fraction of available space) */
+ grid-template-rows: auto auto; /* สองแถว: แถวแรกสำหรับชื่อ, แถวสองสำหรับ UID */
+ align-items: center; /* จัดแนวแนวตั้งของทั้ง container */
+ gap: 10px;
+ padding: 8px 12px;
+ border: 1px solid #eee;
+ border-radius: 25px;
+ background-color: #f9f9f9;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+ font-family: Arial, sans-serif;
+ color: var(--dark-text);
+ width: fit-content; /* ปรับความกว้างให้พอดีกับเนื้อหา */
+}
+
+
+.user-info .user-avatar {
+ width: 40px; /* ปรับขนาดตามต้องการ */
+ height: 40px; /* ปรับขนาดตามต้องการ */
+ border-radius: 50%;
+ object-fit: cover;
+ border: 2px solid var(--primary-purple);
+ grid-row: 1 / 3; /* ให้รูปภาพครอบคลุมทั้งสองแถว */
+ grid-column: 1; /* ให้อยู่ในคอลัมน์แรก */
+}
+
+
+.user-info span {
+ font-weight: 600;
+ font-size: 16px; /* ปรับขนาดตามต้องการ */
+ color: var(--dark-text);
+ grid-row: 1; /* ให้อยู่ในแถวแรก */
+ grid-column: 2; /* ให้อยู่ในคอลัมน์ที่สอง */
+ align-self: start; /* จัดให้อยู่ด้านบนของ cell */
+}
+
+
+.user-info small {
+ font-size: 12px;
+ color: #888;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ max-width: 100px; /* ปรับขนาดตามต้องการ */
+ grid-row: 2; /* ให้อยู่ในแถวที่สอง */
+ grid-column: 2; /* ให้อยู่ในคอลัมน์ที่สอง */
+ align-self: end; /* จัดให้อยู่ด้านล่างของ cell */
+ text-align: right; /* จัดข้อความชิดขวา */
+}
+
 /* Language Dropdown */
 .lang-dropdown {
     position: relative;
@@ -403,6 +455,10 @@ main {
     margin-bottom: 25px;
     font-size: 28px;
     font-weight: 700;
+}
+
+.modal-content button {
+    width: 100%;
 }
 
 .close-button {

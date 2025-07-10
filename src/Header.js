@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
-const Header = ({ onLoginClick }) => {
+const Header = ({ onLoginClick, user }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
 
@@ -43,12 +43,22 @@ const Header = ({ onLoginClick }) => {
           </ul>
         </div>
 
-        <a href="#" className="login-btn" onClick={(e) => {
-          e.preventDefault();
-          console.log('Login button clicked');
-          onLoginClick();
-        }}>Login</a>
-        <a href="#" className="signup-btn">Sign Up</a>
+        {user ? (
+          <div className="user-info">
+            <img src={user.photoURL} alt="Profile" className="user-avatar" />
+            <span>{user.displayName}</span>
+            <small>{user.uid}</small>
+          </div>
+        ) : (
+          <>
+            <a href="#" className="login-btn" onClick={(e) => {
+              e.preventDefault();
+              console.log('Login button clicked');
+              onLoginClick();
+            }}>Login</a>
+            <a href="#" className="signup-btn">Sign Up</a>
+          </>
+        )}
 
         <div className="hamburger-menu" onClick={toggleMenu}>
           <i className={`fas ${menuOpen ? 'fa-times' : 'fa-bars'}`}></i>
