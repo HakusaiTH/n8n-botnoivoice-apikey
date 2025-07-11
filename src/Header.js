@@ -53,10 +53,12 @@ const Header = ({ onLoginClick, user }) => {
           <>
             <a href="#" className="login-btn" onClick={(e) => {
               e.preventDefault();
-              console.log('Login button clicked');
               onLoginClick();
             }}>Login</a>
-            <a href="#" className="signup-btn">Sign Up</a>
+            <a href="#" className="signup-btn" onClick={(e) => {
+              e.preventDefault();
+              onLoginClick();
+            }}>Sign Up</a>
           </>
         )}
 
