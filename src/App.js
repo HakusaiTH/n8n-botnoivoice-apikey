@@ -10,15 +10,16 @@ import ApiKeySection from './ApiKeySection';
 import { useAuth } from './useAuth';
 import './App.css';
 
-function HomePage() {
+function HomePage({ onLoginClick }) {
   return (
     <>
-      <HeroSection />
+      <HeroSection onLoginClick={onLoginClick} />
       <SocialIcons />
       <Footer />
     </>
   );
 }
+
 
 function AppRoutes() {
   const [loginModalOpen, setLoginModalOpen] = useState(false);
@@ -49,7 +50,7 @@ function AppRoutes() {
         {/* ถ้า user ยังไม่ login ให้ไปหน้า Home */}
         <Route
           path="/"
-          element={!user ? <HomePage /> : <Navigate to="/apikey" replace />}
+          element={!user ? <HomePage onLoginClick={openLoginModal} /> : <Navigate to="/apikey" replace />}
         />
 
         {/* หน้า apikey ต้อง login แล้วเท่านั้น */}
